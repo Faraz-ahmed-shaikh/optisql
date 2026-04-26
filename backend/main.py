@@ -8,7 +8,7 @@ from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
-from backend.database import get_db
+from database import get_db
 
 logger = logging.getLogger("optisql")
 
