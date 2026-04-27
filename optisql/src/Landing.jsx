@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import QueryOptimizer from './components/QueryOptimizer'
 
 function Landing() {
   const navigate = useNavigate()
@@ -217,6 +218,15 @@ function Landing() {
           letter-spacing: -0.02em;
         }
 
+        .section-label {
+          text-transform: uppercase;
+          letter-spacing: 0.18em;
+          font-size: 12px;
+          font-weight: 700;
+          color: rgba(226, 232, 240, 0.7);
+          margin-bottom: 10px;
+        }
+
         .section-subtitle {
           margin: 0 0 24px;
           color: rgba(226, 232, 240, 0.78);
@@ -280,6 +290,274 @@ function Landing() {
           padding: 20px;
           line-height: 1.8;
           color: rgba(226, 232, 240, 0.84);
+        }
+
+        .qo {
+          border-radius: 22px;
+          border: 1px solid rgba(148, 163, 184, 0.14);
+          background: rgba(2, 6, 23, 0.26);
+          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+          padding: 22px;
+        }
+
+        .qo-head {
+          text-align: center;
+          margin-bottom: 16px;
+        }
+
+        .qo-label {
+          text-transform: uppercase;
+          letter-spacing: 0.18em;
+          font-size: 12px;
+          font-weight: 800;
+          color: rgba(226, 232, 240, 0.7);
+        }
+
+        .qo-title {
+          margin: 10px 0 6px;
+          font-size: 22px;
+          letter-spacing: -0.02em;
+        }
+
+        .qo-subtitle {
+          margin: 0;
+          color: rgba(226, 232, 240, 0.78);
+          line-height: 1.65;
+        }
+
+        .qo-grid {
+          margin-top: 18px;
+          display: grid;
+          grid-template-columns: 1fr 1.35fr;
+          gap: 16px;
+          align-items: start;
+        }
+
+        .qo-editorCard,
+        .qo-resultsCard {
+          border-radius: 18px;
+          border: 1px solid rgba(148, 163, 184, 0.14);
+          background: rgba(2, 6, 23, 0.35);
+          padding: 16px;
+        }
+
+        .qo-editorLabel {
+          display: block;
+          font-size: 12px;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: rgba(226, 232, 240, 0.7);
+          font-weight: 800;
+          margin-bottom: 10px;
+        }
+
+        .qo-editor {
+          width: 100%;
+          resize: vertical;
+          min-height: 160px;
+          border-radius: 14px;
+          border: 1px solid rgba(148, 163, 184, 0.16);
+          background: rgba(2, 6, 23, 0.55);
+          color: rgba(226, 232, 240, 0.92);
+          padding: 12px;
+          outline: none;
+          font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+          line-height: 1.55;
+          font-size: 13px;
+        }
+
+        .qo-editor:focus {
+          border-color: rgba(96, 165, 250, 0.4);
+          box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+        }
+
+        .qo-analyze {
+          margin-top: 12px;
+          border: 1px solid rgba(96, 165, 250, 0.35);
+          background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(167, 139, 250, 0.85));
+          color: #0b1220;
+          font-weight: 900;
+          padding: 11px 14px;
+          border-radius: 14px;
+          cursor: pointer;
+          transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
+          width: 100%;
+        }
+
+        .qo-analyze:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 18px 40px rgba(59, 130, 246, 0.18);
+          filter: brightness(1.03);
+        }
+
+        .qo-empty {
+          color: rgba(226, 232, 240, 0.78);
+          line-height: 1.65;
+          padding: 10px;
+        }
+
+        .qo-cards {
+          display: grid;
+          gap: 12px;
+        }
+
+        .qo-issue {
+          border-radius: 16px;
+          border: 1px solid rgba(148, 163, 184, 0.14);
+          background: rgba(2, 6, 23, 0.4);
+          padding: 14px;
+        }
+
+        .qo-issueTop {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 8px;
+        }
+
+        .qo-issueTitle {
+          margin: 0;
+          font-size: 14px;
+          letter-spacing: -0.01em;
+        }
+
+        .qo-issueDetail,
+        .qo-issueSuggestion {
+          margin: 0;
+          color: rgba(226, 232, 240, 0.78);
+          line-height: 1.6;
+          font-size: 13px;
+        }
+
+        .qo-issueSuggestion {
+          margin-top: 8px;
+        }
+
+        .qo-muted {
+          color: rgba(226, 232, 240, 0.64);
+        }
+
+        .qo-impactRow {
+          margin-top: 10px;
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+          color: rgba(226, 232, 240, 0.7);
+          font-size: 12px;
+        }
+
+        .qo-pill {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          height: 22px;
+          padding: 0 10px;
+          border-radius: 999px;
+          border: 1px solid rgba(148, 163, 184, 0.18);
+          font-weight: 900;
+          letter-spacing: 0.08em;
+          font-size: 10px;
+        }
+
+        .qo-pill--high {
+          background: rgba(239, 68, 68, 0.12);
+          border-color: rgba(239, 68, 68, 0.35);
+        }
+
+        .qo-pill--medium {
+          background: rgba(245, 158, 11, 0.12);
+          border-color: rgba(245, 158, 11, 0.35);
+        }
+
+        .qo-pill--low {
+          background: rgba(34, 197, 94, 0.12);
+          border-color: rgba(34, 197, 94, 0.35);
+        }
+
+        .qo-compare {
+          margin-top: 14px;
+          border-radius: 16px;
+          border: 1px solid rgba(148, 163, 184, 0.14);
+          background: rgba(2, 6, 23, 0.4);
+          padding: 14px;
+        }
+
+        .qo-compareHead {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: 12px;
+          margin-bottom: 10px;
+        }
+
+        .qo-compareLabel {
+          text-transform: uppercase;
+          letter-spacing: 0.18em;
+          font-size: 11px;
+          font-weight: 900;
+          color: rgba(226, 232, 240, 0.7);
+          margin-bottom: 6px;
+        }
+
+        .qo-compareNote {
+          color: rgba(226, 232, 240, 0.72);
+          font-size: 12px;
+          line-height: 1.5;
+        }
+
+        .qo-score {
+          border: 1px solid rgba(148, 163, 184, 0.16);
+          background: rgba(2, 6, 23, 0.55);
+          border-radius: 14px;
+          padding: 10px 12px;
+          text-align: right;
+          min-width: 120px;
+        }
+
+        .qo-scoreLabel {
+          display: block;
+          color: rgba(226, 232, 240, 0.65);
+          font-size: 11px;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          margin-bottom: 2px;
+          font-weight: 800;
+        }
+
+        .qo-scoreValue {
+          font-weight: 900;
+          font-size: 16px;
+        }
+
+        .qo-tableWrap {
+          overflow-x: auto;
+          border-radius: 14px;
+          border: 1px solid rgba(148, 163, 184, 0.14);
+        }
+
+        .qo-table {
+          width: 100%;
+          border-collapse: collapse;
+          font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+          font-size: 12px;
+        }
+
+        .qo-table th,
+        .qo-table td {
+          padding: 10px 10px;
+          border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+          text-align: left;
+          color: rgba(226, 232, 240, 0.82);
+          white-space: nowrap;
+        }
+
+        .qo-table th {
+          color: rgba(226, 232, 240, 0.65);
+          text-transform: uppercase;
+          letter-spacing: 0.16em;
+          font-weight: 900;
+          font-size: 10px;
+          background: rgba(2, 6, 23, 0.55);
         }
 
         .footer {
@@ -353,6 +631,23 @@ function Landing() {
             flex-direction: column;
             align-items: center;
           }
+
+          .qo {
+            padding: 16px;
+          }
+
+          .qo-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .qo-compareHead {
+            flex-direction: column;
+            align-items: stretch;
+          }
+
+          .qo-score {
+            text-align: left;
+          }
         }
       `}</style>
 
@@ -401,8 +696,8 @@ function Landing() {
 
       <section className="section" id="features">
         <div className="landing-shell">
-          <h2 className="section-title">Features</h2>
-          <p className="section-subtitle">Built to help developers ship efficient SQL with confidence.</p>
+          <div className="section-label">FEATURES</div>
+          <h2 className="section-title">Built to help developers ship efficient SQL with confidence.</h2>
 
           <div className="features-grid">
             <article className="feature-card">
@@ -412,7 +707,10 @@ function Landing() {
                 </span>
                 <h3 className="feature-title">Query Optimization</h3>
               </div>
-              <p className="feature-text">Detect inefficient SQL before execution.</p>
+              <p className="feature-text">
+                Detect inefficient SQL patterns before execution — SELECT *, missing indexes, unsafe updates, and
+                more.
+              </p>
             </article>
 
             <article className="feature-card">
@@ -422,7 +720,10 @@ function Landing() {
                 </span>
                 <h3 className="feature-title">Performance Insights</h3>
               </div>
-              <p className="feature-text">Compare execution time and resource usage.</p>
+              <p className="feature-text">
+                Compare estimated execution time and resource usage between your original query and the optimized
+                version.
+              </p>
             </article>
 
             <article className="feature-card">
@@ -432,25 +733,35 @@ function Landing() {
                 </span>
                 <h3 className="feature-title">Cost Awareness</h3>
               </div>
-              <p className="feature-text">Understand potential infrastructure cost impact.</p>
+              <p className="feature-text">
+                Understand the potential infrastructure cost impact before your query hits production at scale.
+              </p>
             </article>
           </div>
         </div>
       </section>
 
+      <section className="section" aria-label="Query Optimizer demo">
+        <div className="landing-shell">
+          <QueryOptimizer />
+        </div>
+      </section>
+
       <section className="section" id="about">
         <div className="landing-shell">
-          <h2 className="section-title">About</h2>
-          <p className="section-subtitle">Why OptiSQL exists.</p>
+          <div className="section-label">ABOUT</div>
+          <h2 className="section-title">Why OptiSQL exists.</h2>
           <div className="about-card">
             OptiSQL is designed to help developers and learners write efficient SQL queries through real-time
-            analysis and optimization suggestions.
+            analysis and optimization suggestions. Whether you're a student learning SQL for the first time or a
+            backend engineer optimizing production queries — OptiSQL gives you the feedback you need, right when
+            you need it.
           </div>
         </div>
       </section>
 
       <footer className="footer">
-        <div className="landing-shell">© 2026 OptiSQL — Built for Developers</div>
+        <div className="landing-shell">© 2026 OptiSQL — Built by Developers, for Developers</div>
       </footer>
     </div>
   )

@@ -23,7 +23,7 @@ function SqlEditor({ theme, onResults }) {
     setSuccessMessage('')
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/execute-query', {
+      const response = await axios.post('https://optisql-production.up.railway.app/execute-query', {
         query: queryText,
       })
 
